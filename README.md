@@ -1,2 +1,2 @@
 # KU Color Picker
-KU Color Picker is a simple color picker.
+Simple, free and open source color picker.

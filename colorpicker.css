@@ -1,0 +1,174 @@
+/*
+* KU Color Picker
+* URL : https://github.com/walidku/ku-color-picker/
+*/
+.ku-color-picker * {
+	box-sizing: border-box;
+}
+.ku-color-picker {
+	position: relative;
+	display: inline-block;
+	text-align: left;
+}
+.ku-color-picker .preview-color {
+	width: max-content;
+	height: 35px;
+	display: inline-flex;
+	align-items: center;
+	background-color: #fdfdfd;
+	border-radius: 3px;
+	overflow: hidden;
+	border: 1px solid #d0d0d0;
+	cursor: pointer;
+	user-select: none;
+}
+.ku-color-picker .preview-color .color {
+	display: inline-block;
+	width: 40px;
+	height: 100%;
+	float: left;
+	position: relative;
+	border-right: 1px solid #d0d0d0;
+	background-position: 0 0, 5px 5px;
+	background-size: 10px 10px;
+	background-image: linear-gradient(45deg, #ccc 25%, transparent 25%, transparent 75%, #ccc 75%, #ccc 100%),linear-gradient(45deg, #ccc 25%, #ededed 25%, #ededed 75%, #ccc 75%, #ccc 100%);
+}
+.ku-color-picker .preview-color .color>span {
+	width: 100%;
+	height: 100%;
+	display: block;
+	position: relative;
+}
+.ku-color-picker .preview-color .select-text {
+	font: 14px sans-serif;
+	padding: 0 12px;
+	color: #969696;
+	border-left: 0;
+	display: flex;
+	align-items: center;
+	height: 100%;
+}
+.ku-color-picker .container {
+	display: none;
+	width: 300px;
+	height: 355px;
+	padding: 13px;
+	margin: 0 0 10px 0;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	position: absolute;
+	left: 0;
+	top: calc(100% + 10px);
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+	z-index: 999999;
+}
+.ku-color-picker .container::before {
+	content: '';
+	width: 10px;
+	height: 10px;
+	display: block;
+	position: absolute;
+	top: -6px;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	border-right: 0;
+	border-bottom: 0;
+	transform: rotate(45deg);
+}
+.ku-color-picker.open .container {
+	display: block;
+}
+.ku-color-picker .container .pick-color {
+	margin: 15px 0 0 0;
+}
+.ku-color-picker .container .color-square {
+	width: 100%;
+	height: 200px;
+	position: relative;
+	cursor: pointer;
+}
+.ku-color-picker .container .color-square .picker, .ku-color-picker .container .color-square .unique-color, .ku-color-picker .container .color-square .black, .ku-color-picker .container .color-square .white {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: 9;
+	background-color: transparent;
+}
+.ku-color-picker .container .color-square .unique-color {
+	z-index: 0;
+	background-color: red;
+}
+.ku-color-picker .container .color-square .black {
+	z-index: 1;
+	background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(#000));
+	background: linear-gradient(to bottom, transparent 0%, #000 100%);
+}
+.ku-color-picker .container .color-square .white {
+	z-index: 0;
+	background: -webkit-gradient(linear, left top, right top, from(#fff), to(rgba(255,255,255,0)));
+	background: linear-gradient(to right, #fff 0%, rgba(255,255,255,0) 100%);
+}
+.ku-color-picker .container .colors-line {
+	width: calc(100% - 6px);
+	height: 10px;
+	margin: 20px auto 0;
+	border-radius: 50px;
+	background: linear-gradient(to right, rgb(255, 0, 0) 0%, rgb(255, 0, 255) 17%, rgb(0, 0, 255) 34%, rgb(0, 255, 255) 50%, rgb(0, 255, 0) 67%, rgb(255, 255, 0) 84%, rgb(255, 0, 0) 100%);
+	position: relative;
+	cursor: pointer;
+}
+.ku-color-picker .container .color-selecter {
+	width: 10px;
+	height: 10px;
+	background-color: #fff;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+	position: absolute;
+	top: 0;
+	border-radius: 50px;
+	transform: scale(2);
+	cursor: pointer;
+	z-index: 99;
+	border: 1px solid #fff;
+}
+.ku-color-picker .container .colors-line .color-selecter {
+	left: 0;
+	margin: 0 -5px;
+}
+.ku-color-picker .container .color-square .color-selecter {
+	right: 0;
+	margin: -5px;
+	border: 1px solid #fff;
+}
+.ku-color-picker .container .opacity-line {
+	width: calc(100% - 6px);
+	height: 10px;
+	margin: 20px auto 0;
+	border-radius: 50px;
+	position: relative;
+	cursor: pointer;
+	background-position: 0 0, 5px 5px;
+	background-size: 10px 10px;
+	background-image: linear-gradient(45deg, #ccc 25%, transparent 25%, transparent 75%, #ccc 75%, #ccc 100%),linear-gradient(45deg, #ccc 25%, #ededed 25%, #ededed 75%, #ccc 75%, #ccc 100%);
+}
+.ku-color-picker .container .opacity-line .color {
+	width: 100%;
+	height: 100%;
+	display: block;
+	border-radius: 50px;
+	background: linear-gradient(to right, transparent 0%, rgb(255,0,0) 100%);
+}
+.ku-color-picker .container .opacity-line .opacity-selecter {
+	width: 10px;
+	height: 10px;
+	background-color: #fff;
+	position: absolute;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto 0 auto -8px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+	border: 1px solid #fff;
+	border-radius: 50px;
+	transform: scale(2);
+	cursor: pointer;
+}

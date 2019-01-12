@@ -1,6 +1,7 @@
 /*
-* KU Color Picker
-* URL : https://github.com/walidku/ku-color-picker/
+KU Color Picker
+Version: 0.1.1
+URL : https://github.com/walidku/ku-color-picker/
 */
 jQuery(function ($) {
 
@@ -110,7 +111,7 @@ jQuery(function ($) {
 		var finalColor = colorMixer(rgb.uniqueColor, rgb.white, uniqueColorPercent);
 		finalColor = colorMixer(rgb.black, colorValues(finalColor), blackPercent);
 
-		if ( event.target.parentElement !== null && event.target.parentElement.className != 'opacity-line' ) {
+		if ( !$(this).parents('.opacity-line').hasClass('opacity-line') ) {
 			selecterBall.css('background-color', finalColor);
 			colorPicker.find('.container .opacity-line .color').css('background', 'linear-gradient(to right, transparent 0%, ' + finalColor + ' 100%)');
 		}
